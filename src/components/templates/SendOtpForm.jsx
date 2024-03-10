@@ -1,5 +1,5 @@
 import toast, { Toaster } from "react-hot-toast";
-import { sendOtp } from "../../services/auth";
+import { sendOtp } from "services/auth";
 
 function SendOtpForm({ mobile, setMobile, setStep }) {
   const submitHandler = async (event) => {
@@ -9,8 +9,7 @@ function SendOtpForm({ mobile, setMobile, setStep }) {
     const { response, error } = await sendOtp(mobile);
 
     if (response) setStep(2);
-    if (error)
-      return toast.error("خطایی رخ داده است!");
+    if (error) return toast.error("خطایی رخ داده است!");
   };
   return (
     <>

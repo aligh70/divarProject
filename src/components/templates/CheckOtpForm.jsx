@@ -1,6 +1,6 @@
 import toast, { Toaster } from "react-hot-toast";
-import { checkOtp } from "../../services/auth";
-import setCookie from "../../utils/cookie";
+import { checkOtp } from "services/auth";
+import setCookie from "utils/cookie";
 
 function CheckOtpForm({ code, setCode, mobile, setStep }) {
   const submitHandler = async (event) => {
@@ -10,7 +10,10 @@ function CheckOtpForm({ code, setCode, mobile, setStep }) {
 
     const { response, error } = await checkOtp(mobile, code);
 
-    if (response) setCookie(response.data);
+    if (response) {
+      setCookie(response.data);
+      console.log(response);
+    }
 
     if (error) return toast.error("خطایی رخ داده است!");
   };
