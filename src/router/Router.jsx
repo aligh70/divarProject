@@ -11,7 +11,6 @@ import Loader from "components/modules/Loader";
 
 function Router() {
   const { data, isLoading } = useQuery(["profile"], getProfile);
-  console.log({ data, isLoading });
 
   if (isLoading) return <Loader />;
 

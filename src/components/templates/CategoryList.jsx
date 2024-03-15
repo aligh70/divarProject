@@ -5,13 +5,12 @@ import styles from "./CategoryList.module.css";
 
 function CategoryList() {
   const queryClient = useQueryClient();
-  const { data, isLoading, error } = useQuery(["get-categories"], getCategory);
+  const { data, isLoading } = useQuery(["get-categories"], getCategory);
 
   const { mutate } = useMutation(deleteCategory, {
     onSuccess: () => queryClient.invalidateQueries("get-categories"),
   });
 
-  console.log({ data, isLoading, error });
   return (
     <div className={styles.list}>
       {isLoading ? (
