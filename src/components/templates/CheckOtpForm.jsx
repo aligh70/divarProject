@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import toast, { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 
 import { checkOtp } from "services/auth";
@@ -28,25 +28,22 @@ function CheckOtpForm({ code, setCode, mobile, setStep }) {
     if (error) return toast.error("خطایی رخ داده است!");
   };
   return (
-    <>
-      <Toaster />
-      <form onSubmit={submitHandler} className={styles.form}>
-        <p>تایید کد اس ام اس شده</p>
-        <span>کد پیامک شده به شماره «{mobile}» را وارد کنید</span>
-        <label htmlFor="input">کد تایید را وارد کنید</label>
-        <input
-          type="text"
-          id="input"
-          placeholder="کد تایید"
-          value={code}
-          onChange={(e) => setCode(e.target.value)}
-        />
-        <button type="submit">ورود</button>
-        <button onClick={() => setStep(1)} className={styles.backButton}>
-          تغییر شماره موبایل
-        </button>
-      </form>
-    </>
+    <form onSubmit={submitHandler} className={styles.form}>
+      <p>تایید کد اس ام اس شده</p>
+      <span>کد پیامک شده به شماره «{mobile}» را وارد کنید</span>
+      <label htmlFor="input">کد تایید را وارد کنید</label>
+      <input
+        type="text"
+        id="input"
+        placeholder="کد تایید"
+        value={code}
+        onChange={(e) => setCode(e.target.value)}
+      />
+      <button type="submit">ورود</button>
+      <button onClick={() => setStep(1)} className={styles.backButton}>
+        تغییر شماره موبایل
+      </button>
+    </form>
   );
 }
 
