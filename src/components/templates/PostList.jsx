@@ -8,6 +8,7 @@ function PostList() {
   const queryClient = useQueryClient();
 
   const { data, isLoading } = useQuery(["my-post-list"], getPosts);
+  console.log(data);
 
   const { mutate } = useMutation(deletePost, {
     onSuccess: () => queryClient.invalidateQueries("my-post-list"),
